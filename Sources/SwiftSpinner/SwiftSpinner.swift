@@ -399,7 +399,7 @@ public class SwiftSpinner: UIView {
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        if tapHandler != nil {
+        if let touch = touches.first, tapHandler != nil, subtitleLabel?.bounds.contains(touch.location(in: subtitleLabel ?? self)) ?? false {
             tapHandler?()
             tapHandler = nil
         }
